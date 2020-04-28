@@ -1,119 +1,237 @@
-<!-- Facial point detection app written using Opencv.js & tensorflow.js -->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Drminix's Github page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<!doctype html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Facial point detection app">
-    <meta name="keywords" content="OpenCV.js, Tensorflow.js">
-    <meta name="author" content="Sang Lee">
-    
-    <title> Facial PointDetection using VGG16</title>
-    
-   <!-- tensorflow.js -->
-   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-   
-   <!-- GUI) Materilize CSS related -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
-         
-   <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen"/>
-         
-    </head>
-    <body>
-        
-    <!--   Header   -->
-    <div class="section no-pad-bot" id="index-banner">
-      <div class="container">
-        <h5 class="header center blue-text small">Facial point detection using machine learning(tensorflow.js)</h5>
-        <div class="row center">
-          <h6 class="header col s12 light">Model: VGG-16 transfer learning + data augmentation</h6>
-        </div>
-      </div>
-    </div>
-        
-      <!--   Start buttons   -->
-    <div class="section no-pad-bot light-blue lighten-4">
-    <div class="container">
-    <div class="row center">
-      <button id="button_capture" class="waves-effect waves-light light-blue btn-small">Start Button</button>
-      <br/><br/>
-    </div>
-    </div>
-    </div>      
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
 
-    <!-- canvas output -->    
-    <div class="section no-pad-bot lighten-4">
-    <div class="container">
-    <div class="row center">
-        <video id="video" width="400" height="400" style="display:none"></video>
-        <canvas id="canvas_output" style="border:1px solid #000000;"> </canvas> 
-    </div>
-    </div>
-    </div>   
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Drminix</span>
+								</a>
 
-    
-    <!-- control panel -->
-    <div class="container">
-    <div class="section">
- 
-    <div class="row">
-        
-      <!--   Control   -->
-      <div class="col s12 m6">
-        <div class="icon-block">
-          <h3 class="center light-blue-text"><i class="material-icons" style="font-size: 2em">build</i></h3>
-          <h5 class="center">Control panel</h5>
- 
-          <p class="light"></p>
- 
-          <div>
-            <p><label>Status:</label></p>
-            <pre class="grey lighten-4" style="overflow-x: auto"><em id="model-status">Loading data...</em></pre>
- 
-        
-           <div class="center">
-            <button autocomplete="off" id="load-button" class="waves-effect light-blue waves-light btn-small" disabled onclick="load()">Load Model</button>
-            <button autocomplete="off" id="save-button" class="waves-effect light-blue waves-light btn-small" disabled onclick="save()">Save Model</button>
-          </div>
-              
-          </div>
-          <br/>
- 
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
 
- 
-        </div>
-      </div>
- 
-      <!--   Fashion items   -->
-      <div class="col s12 m6">
-        <div class="icon-block">
-          <h3 class="center light-blue-text"><i class="material-icons" style="font-size: 2em">face</i></h3>
-          <h5 class="center">Fashion items</h5>
- 
-            <p>
-            <label>
-            <input  type="checkbox" />
-            <span> Safety Glasses </span>
-            </label>
-            </p>
+						</div>
+					</header>
+                    
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+			                
+						</ul>
+					</nav>
 
-            <p>
-            <label>
-            <input type="checkbox" />
-            <span>N95 Mask</span>
-            </label>
-            </p>
-            
-        </div>
-        </div>
-    </div> <!-- the end of fashion item -->
- 
-  </div>
-</div>
-        
-    <script src="src/control.js"></script>
-    <script async src="src/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+                                <h1>Machine Learning | Medical Imaging | C++ </h1>
+                                <p>Please select a project to visit github page or view the live demo. </p>
+							</header>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/facialpointdetection.png" alt="" />
+									</span>
+									<a href="projects/facialpointdetection/index.html">
+										<h2>Facial Point detection using cnn</h2>
+										<div class="content">
+											<p>CNN model is trained using Kaggle facial point competition dataset using transfer learning and data augmentation. Model is then used for implementing facial point tracking desktop app and webapp. <br><strong>#Python, #Tensorflow, #QT, #Tensorflow.js, #OpenCV, #Kaggle</strong></p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/CT.PNG" alt="CT" />
+									</span>
+									<a href="https://github.com/drminix/ctsimulator">
+										<h2>Computed Tomography(CT) Simulation </h2>
+										<div class="content">
+											<p>Parallel beam CT simulation program written in C++ and QT. Siddon's algorithm is used for system matrix generation. SIRT, SART, and MLE are supported.<br> <strong>#C++, #QT,  #Simulation</strong> </p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Feugiat</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Tempus</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Aliquam</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Veroeros</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Ipsum</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic08.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Dolor</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic09.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Nullam</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic10.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Ultricies</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic11.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Dictum</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic12.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Pretium</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
 
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
