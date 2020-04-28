@@ -2,10 +2,27 @@ const video = document.getElementById('video');
 const actionBtn = document.getElementById('button_capture');
 const width = 400;
 const height = 400;
-const FPS = 30;
+const FPS = 60;
 let stream;
 let streaming = false;
 let faceCascadeFile = 'haarcascade_frontalface_default.xml';
+const LEFT_EYEBROW_OUTER_END = [14,15];
+const RIGHT_EYEBROW_OUTER_END = [18,19];
+const MOUSE_CENTER_BOTTOM_LIP = [28,29];
+const MOUSE_CENTER_TOP_LIP = [26,27];
+const MOUSE_LEFT_CORNER = [22,23];
+const MOUSE_RIGHT_CORNER = [24,25];
+const NOSE_TIP = [20,21];
+const TARGET_IMAGE_WIDTH = 96;
+const TARGET_IMAGE_HEIGHT = 96;
+
+//for debugging with nginx
+//const model_url = `http://localhost:8080/model.json`
+const model_url=`https://raw.githubusercontent.com/drminix/models/master/facialpointdetection/tensorflowjs_model/model.json`
+
+let model;
+let model_loaded = false;
+
 document.body.classList.add("loading");
 
 function onOpenCvReady() {
@@ -14,6 +31,14 @@ function onOpenCvReady() {
   console.log("OpenCV is ready: ",cv);
 }
 
+async function loadModel() {
+    model = await tf.loadLayersModel(model_url);
+    if(model) {
+        document.getElementById("model-status").innerHTML = "Model loaded successfully";
+    }
+    model_loaded = true;
+    
+}
 function meme() {
     console.log("files are loaded");
 }
@@ -48,6 +73,7 @@ function onReady() {
             dst = new cv.Mat(height, width, cv.CV_8UC4);
             faces = new cv.RectVector();
             gray = new cv.Mat();
+            
             // load pre-trained classifiers
             classifier = new cv.CascadeClassifier();
             if(classifier.load(faceCascadeFile) != true) {
@@ -89,11 +115,48 @@ function onReady() {
         // draw faces.
         for (let i = 0; i < faces.size(); ++i) {
             let face = faces.get(i);
+           
+            
             let point1 = new cv.Point(face.x, face.y);
             let point2 = new cv.Point(face.x + face.width, face.y + face.height);
             cv.rectangle(dst, point1, point2, [255, 0, 0, 255]);
             
-            //run the model
+            //rect = new cv.Rect(100, 100, 200, 200);
+            //dst = src.roi(rect);
+            //let rect = cv.Rect(point1.x,point1.y, point2.x,point2.y);
+            //if(face.width < TARGET_IMAGE_WIDTH || face.height < //TARGET_IMAGE_HEIGHT) {
+            //    continue;
+            //}
+            if(model_loaded) {
+                //convert data to array(TODO: must be a better way to copy out the data)
+                const target_array = [];
+                for(let row=face.y;row<face.y+TARGET_IMAGE_HEIGHT;row++) {
+                    for(let col=face.x; col<face.x+TARGET_IMAGE_WIDTH;col++) {
+                        let data = gray.data[row*gray.cols+col];
+                        target_array.push(data);
+                    }
+                }
+
+                //create tensor
+                const inputTensor = tf.tensor4d(target_array, [1,96,96,1]);
+
+                //make prediction
+                const outputTensor = model.predict(inputTensor);
+                const outputArray = outputTensor.dataSync();
+                
+                tf.dispose(inputTensor);
+                tf.dispose(outputTensor);
+                //console.log(outputArray);
+                
+                scale_x = face.width / TARGET_IMAGE_WIDTH;
+                scale_y = face.height / TARGET_IMAGE_HEIGHT;
+                for(let i=0;i<22;i+=2) {
+                    center_x = Math.floor(face.x + outputArray[i]*scale_x);
+                    center_y = Math.floor(face.y + outputArray[i+1]*scale_y);
+                    cv.circle(dst, new cv.Point(center_x,center_y), 2,  [255, 255, 0,255] , 1,8,0);
+                }
+                
+            }
             
         }
         
@@ -104,3 +167,5 @@ function onReady() {
         setTimeout(processVideo, delay);
     }
 }
+
+loadModel();

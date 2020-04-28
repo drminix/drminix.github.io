@@ -8,7 +8,7 @@
     <meta name="keywords" content="OpenCV.js, Tensorflow.js">
     <meta name="author" content="Sang Lee">
     
-    <title> Facial PointDetection using VGG16</title>
+    <title>Real-time Facial PointDetection using VGG16</title>
     
    <!-- tensorflow.js -->
    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
@@ -26,9 +26,11 @@
     <!--   Header   -->
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
-        <h5 class="header center blue-text small">Facial point detection using machine learning(tensorflow.js)</h5>
+        <h5 class="header center blue-text small">Real-time Facial point detection using machine learning(tensorflow.js)</h5>
         <div class="row center">
           <h6 class="header col s12 light">Model: VGG-16 transfer learning + data augmentation</h6>
+            <h7 class="header col s12 light">*NOTE* Facial point detection will be enabled once the model is downloaded.</h7>
+            
         </div>
       </div>
     </div>
@@ -70,13 +72,9 @@
  
           <div>
             <p><label>Status:</label></p>
-            <pre class="grey lighten-4" style="overflow-x: auto"><em id="model-status">Loading data...</em></pre>
+            <pre class="grey lighten-4" style="overflow-x: auto"><em id="model-status">Loading Model...</em></pre>
  
         
-           <div class="center">
-            <button autocomplete="off" id="load-button" class="waves-effect light-blue waves-light btn-small" disabled onclick="load()">Load Model</button>
-            <button autocomplete="off" id="save-button" class="waves-effect light-blue waves-light btn-small" disabled onclick="save()">Save Model</button>
-          </div>
               
           </div>
           <br/>
@@ -91,6 +89,7 @@
         <div class="icon-block">
           <h3 class="center light-blue-text"><i class="material-icons" style="font-size: 2em">face</i></h3>
           <h5 class="center">Fashion items</h5>
+          <h6 class="center">*NOTE* Currently supported in desktop app</h6>
  
             <p>
             <label>
@@ -116,8 +115,8 @@
 <script>
   var Module = {
     preRun: [function() {
-      Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml', true, false);
-      Module.FS_createPreloadedFile('/', 'VGG16_DataAug.h5', 'https://raw.githubusercontent.com/drminix/w207-project4/master/facialpointviewer/model/VGG16_DataAug.h5', true, false);
+      Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', 'https://raw.githubusercontent.com/drminix/models/master/facialpointdetection/haarcascade_frontalface_alt.xml', true, false);
+      Module.FS_createPreloadedFile('/', 'model.json', 'https://raw.githubusercontent.com/drminix/models/master/facialpointdetection/tensorflowjs_model/model.json', true, false);
     }],
     _main: function() {meme();}
   };
