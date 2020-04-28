@@ -156,6 +156,10 @@ function onReady() {
                     cv.circle(dst, new cv.Point(center_x,center_y), 2,  [255, 255, 0,255] , 1,8,0);
                 }
                 
+                let glasses_enabled = $('#glasses_checkbox').prop('checked');
+                
+                
+                
             }
             
         }
